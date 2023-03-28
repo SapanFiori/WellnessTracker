@@ -1,0 +1,90 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" controllerName="ns01.moody.controller.Main" displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+    <content>
+      <f:SimpleForm id="frm01" editable="true" layout="ResponsiveGridLayout"
+       labelSpanXL="3" lableSpanL="3" lableSpanM="3" 
+       columnsXL="1" columnsL="1" comlumnsM="1" 
+       emptySpanXL="8" emptySpanL="8" emptySpanM="8">
+        <f:content>
+        <Label text="Your Sleep time" id="lbl_sleep"/>
+        <HBox>
+        <Input id="id_sleep" value="" type="Number" width="10%"/> 
+        <Input value="Hrs" editable="false" enabled="false"/> 
+        <Button icon="../picture/sleep.png"></Button> 
+        </HBox>      
+        <Label text="Your screen time" id="lbl_meeting"/>
+        <HBox>
+        <Input id="id_meet" value=""  type="Number"  width="10%"/>
+        <Input value="Hrs" editable="false" enabled="false"/> 
+        <Button icon="../picture/mobile.png"></Button> 
+        </HBox>
+        <Label text="Commute time" id="lbl_travel"/>
+        <HBox>
+        <Input id="id_travel" value=""  type="Number"  width="10%"/>
+        <Input value="Hrs" editable="false" enabled="false"  /> 
+        <Button icon="../picture/commute.png"></Button> 
+        </HBox>
+        <Label text="Time for workout" id="lbl_workout"/>
+        <HBox>
+        <Input id="id_exrcs"  type="Number"  width="10%"/>
+        <Input value="Hrs" editable="false" enabled="false"  /> 
+        <Button icon="../picture/workout.png"></Button> 
+        </HBox>
+        <Label text="Leisure time" id="lbl_hobby"/>
+        <HBox>
+        <Input id="id_hobby"  type="Number"  width="10%"/>
+        <Input value="Hrs" editable="false" enabled="false"  /> 
+        <Button icon="../picture/hobbies.png"></Button> 
+        </HBox>
+        <Label text="Time on the job" id="lbl_work"/>
+        <HBox>
+        <Input id="id_work"  type="Number"  width="10%"/>
+        <Input value="Hrs" editable="false" enabled="false"  /> 
+        <Button icon="../picture/office.png"></Button> 
+        </HBox>
+        </f:content>          
+      </f:SimpleForm>
+      <f:SimpleForm>
+      <f:content>
+          <TextArea xmlns="sap.m" rows="4" id="area1" class="sapUiMediumMarginTop" 
+          editable="false" growing="true" growingMaxLines="10" width="100%"/>
+     </f:content>
+     </f:SimpleForm>
+    </content>
+    <footer>
+			<OverflowToolbar id="otbFooter">
+
+        <ToolbarSpacer/>
+        <Label text = "Make Yourself Happy" id="label5" class = "myfont"/>
+        <Button xmlns="sap.m" id="btnInsta" type="Accept" press="pressInsta" icon="../picture/instagram.png">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>  
+        <Button xmlns="sap.m"  id="btnGaana" type="Accept" press="pressGaana" icon="../picture/gaana.png">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button> 
+        <Button xmlns="sap.m"  id="btnYT" type="Accept"  press="pressYT" icon="../picture/youtube.png">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button> 
+        <Button xmlns="sap.m"  id="btnSwiggy" type="Accept" press="pressSwiggy" icon="../picture/swiggy.png">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button> 
+        <Button xmlns="sap.m"  id="btnZom" type="Accept" press="pressZom" icon="../picture/zomato.png">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button> 
+        <Button xmlns="sap.m"  id="btnFb" type="Accept" press="pressFb" icon="../picture/facebook.png">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>  
+				<ToolbarSpacer/>
+				<Button xmlns="sap.m" press="onPress" text="Daily Report" id="btnSubmit" type="Accept" icon="sap-icon://accept">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>
+        <Button xmlns="sap.m" press="onPressWeekly" text="Weekly Report" id="btnWeek" type="Accept" icon="sap-icon://accept">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>
+				<Button xmlns="sap.m" press="onRest" text="Reset" id="btnReset" type="Reject" icon="sap-icon://reset">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>
