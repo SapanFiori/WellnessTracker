@@ -14,7 +14,7 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: abap-cloud-sapan42-44980582trial-dev
+          destination: abap-cloud-test-abap-38494ad6trial-dev
           url: https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com
           scp: true
         app:
