@@ -37,7 +37,7 @@ sap.ui.define([
                         var toastSuccess = "Response Generated Successfully";
                         MessageToast.show(toastSuccess);
                         var aiResponse = oData.Suggest;
-                        this.getView().byId("area1").setValue(aiResponse);
+                        this.getView().byId("area1").setText(aiResponse);
                         //pie chart code
                          var ovalues = {
                            values: 
@@ -48,7 +48,25 @@ sap.ui.define([
                            { category: "Leisure Time", value: oData.Hobbies},
                            { category: "Job Time", value: oData.WorkHour}]
                         };
-              
+                        var smileyPath = this.getView().getModel("imageModel").getData().path;
+                        if (oData.MentalScore >= 8 ){
+                            var HappyPath = smileyPath + "/picture/happy.png";
+                            this.getView().byId("smiley").setSrc(HappyPath);
+                        } 
+                        else if (oData.MentalScore >= 5 && oData.MentalScore <= 7){
+                            var NeutralPath = smileyPath + "/picture/neutral.png";
+                            this.getView().byId("smiley").setSrc(NeutralPath);
+                        } 
+                        else if (oData.MentalScore >= 1 && oData.MentalScore <= 4){
+                            var SadPath = smileyPath + "/picture/sad.png";
+                            this.getView().byId("smiley").setSrc(SadPath);
+                        } 
+                        var scoreTxt = "Your Wellness Score";
+                        this.getView().byId("scoreText").setText(scoreTxt);
+
+                        var scoreNum = oData.MentalScore + "/10";
+                        this.getView().byId("scoreNumber").setText(scoreNum);
+
                         var oJsonModel = new sap.ui.model.json.JSONModel();
                         oJsonModel.setData(ovalues);
                         this.pieChartCreate( oJsonModel ); //function call to create pie chart

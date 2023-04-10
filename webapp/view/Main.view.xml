@@ -59,6 +59,13 @@ controllerName="ns01.moody.controller.Main" displayBlock="true">
        </HBox> 
         </f:content>          
       </f:SimpleForm>
+      <f:SimpleForm width="200px">
+        <VBox>
+          <Image id="smiley" width="150px"/>
+          <Text id="scoreText" class="large"/>
+          <Text id="scoreNumber" class="underlined underline-clip"/>
+        </VBox>
+      </f:SimpleForm>
     <chart:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showZoom="false" title="Records Analysis" width="700px" height="55%" >  
     <chart:ChartContainerContent>
     <chart:content>
