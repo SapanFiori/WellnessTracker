@@ -1,167 +1,209 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" 
-          xmlns:viz="sap.viz.ui5.controls"
-          xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
-          xmlns:viz.data="sap.viz.ui5.data" 
-          xmlns="sap.m"  
-          xmlns:f="sap.ui.layout.form" 
-          xmlns:layout="sap.ui.layout" 
-          xmlns:chart="sap.suite.ui.commons"
-controllerName="ns01.moody.controller.Main" displayBlock="true">
-    <Page id="page" title="{i18n>title}" class="sapUiTinyMargin" >
+<mvc:View xmlns:cssgrid="sap.ui.layout.cssgrid"
+  xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+  xmlns:viz.data="sap.viz.ui5.data"
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:layout="sap.ui.layout"
+  xmlns:chart="sap.suite.ui.commons" controllerName="ns01.moody.controller.Main" displayBlock="true">
+  <Page id="page" title="{i18n>title}" class="sapUiTinyMargin" titleAlignment="Center">
     <content>
-     <HBox>
-      <f:SimpleForm id="frm01" editable="true" layout="ResponsiveGridLayout"
-       labelSpanXL="3" lableSpanL="3" lableSpanM="3" 
-       columnsXL="1" columnsL="1" comlumnsM="1" 
-       emptySpanXL="8" emptySpanL="8" emptySpanM="8">
-        <f:content>
-        <Label text="Your Sleep Time" id="lbl_sleep" /> 
-        <HBox> 
-        <Input id="id_sleep" value="" type="Number" width="10%"/>
-        <Input value="Hrs" editable="false" enabled="false"/>
-        <Button icon="{imageModel>/path}/picture/sleep.png" id = "But1"></Button> 
-        <!-- <Button icon="../zui_well_track/picture/sleep.png" id = "But1"></Button>  -->
-        </HBox>   
-        <Label text="Your screen time" id="lbl_meeting"/>
-        <HBox> 
-        <Input id="id_meet" value=""  type="Number"  width="10%"/>
-        <Input value="Hrs" editable="false" enabled="false"/> 
-        <!-- <Button icon="../zui_well_track/picture/mobile.png"></Button>  -->
-        <Button icon="{imageModel>/path}/picture/mobile.png"></Button> 
-        </HBox>
-        <Label text="Commute time" id="lbl_travel"/>
-        <HBox>
-        <Input id="id_travel" value=""  type="Number"  width="10%"/>
-        <Input value="Hrs" editable="false" enabled="false"  /> 
-        <!-- <Button icon="../zui_well_track/picture/commute.png"></Button>  -->
-        <Button icon="{imageModel>/path}/picture/commute.png"></Button> 
-        </HBox>
-        <Label text="Time for workout" id="lbl_workout"/>
-        <HBox>
-        <Input id="id_exrcs"  type="Number"  width="10%"/>
-        <Input value="Hrs" editable="false" enabled="false"  /> 
-        <!-- <Button icon="../zui_well_track/picture/workout.png"></Button>  -->
-        <Button icon="{imageModel>/path}/picture/workout.png"></Button> 
-        </HBox>
-        <Label text="Leisure time" id="lbl_hobby"/>
-        <HBox>
-        <Input id="id_hobby"  type="Number"  width="10%"/>
-        <Input value="Hrs" editable="false" enabled="false"  /> 
-        <!-- <Button icon="../zui_well_track/picture/hobbies.png"></Button>  -->
-        <Button icon="{imageModel>/path}/picture/hobbies.png"></Button>
-        </HBox>
-        <Label text="Time on the job" id="lbl_work"/>
-        <HBox>
-        <Input id="id_work"  type="Number"  width="10%"/>
-        <Input value="Hrs" editable="false" enabled="false"  /> 
-        <!-- <Button icon="../zui_well_track/picture/office.png"></Button>  -->
-         <Button icon="{imageModel>/path}/picture/office.png"></Button>
-       </HBox> 
-        </f:content>          
-      </f:SimpleForm>
-    <chart:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showZoom="false" title="Records Analysis" width="700px" height="55%" >  
-    <chart:ChartContainerContent>
-    <chart:content>
-    <viz:Popover id="idPopover"> </viz:Popover>
-    <viz:VizFrame id="idPieChart" uiConfig="{applicationSet:'fiori'}" vizType='pie' autoAdjustHeight="true" width="700px" height="50%"
-    vizProperties="{
+      <layout:Splitter id="mainSplit" height="91%">
+        <layout:layoutData>
+          <layout:SplitterLayoutData size="auto"/>
+        </layout:layoutData>
+        <layout:contentAreas>
+          <layout:Splitter id="VSplit1" orientation="Vertical">
+            <layout:contentAreas>
+              <f:SimpleForm id="frm01" editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+                  <Label text="Your Sleep Time" id="lbl_sleep" />
+                  <HBox id="hbox_sleep">
+                    <Input id="id_sleep" value="" type="Number" width="10%"/>
+                    <Input id = "id_blank1" value="Hrs" editable="false" enabled="false"/>
+                    <Button icon="{imageModel>/path}/picture/sleep.png" id = "But1"></Button>
+                    <!-- <Button icon="../zui_well_track/picture/sleep.png" id = "But1"></Button>  -->
+                  </HBox>
+                  <Label text="Your screen time" id="lbl_meeting"/>
+                  <HBox id="hbox_meet">
+                    <Input id="id_meet" value="" type="Number" width="10%"/>
+                    <Input id = "id_blank2" value="Hrs" editable="false" enabled="false"/>
+                    <Button icon="{imageModel>/path}/picture/mobile.png"></Button>
+                  </HBox>
+                  <Label text="Commute time" id="lbl_travel"/>
+                  <HBox id="hbox_travel">
+                    <Input id="id_travel" value="" type="Number" width="10%"/>
+                    <Input value="Hrs" editable="false" enabled="false" />
+                    <!-- <Button icon="../zui_well_track/picture/commute.png"></Button>  -->
+                    <Button icon="{imageModel>/path}/picture/commute.png"></Button>
+                  </HBox>
+                  <Label text="Time for workout" id="lbl_workout"/>
+                  <HBox id="ip_exrcs">
+                    <Input id="id_exrcs" type="Number" width="10%"/>
+                    <Input value="Hrs" editable="false" enabled="false" />
+                    <!-- <Button icon="../zui_well_track/picture/workout.png"></Button>  -->
+                    <Button icon="{imageModel>/path}/picture/workout.png"></Button>
+                  </HBox>
+                  <Label text="Leisure time" id="lbl_hobby"/>
+                  <HBox id="hbox_hobby">
+                    <Input id="id_hobby" type="Number" width="10%"/>
+                    <Input value="Hrs" editable="false" enabled="false" />
+                    <!-- <Button icon="../zui_well_track/picture/hobbies.png"></Button>  -->
+                    <Button icon="{imageModel>/path}/picture/hobbies.png"></Button>
+                  </HBox>
+                  <Label text="Time on the job" id="lbl_work"/>
+                  <HBox id="hbox_work">
+                    <Input id="id_work" type="Number" width="10%"/>
+                    <Input value="Hrs" editable="false" enabled="false" />
+                    <!-- <Button icon="../zui_well_track/picture/office.png"></Button>  -->
+                    <Button icon="{imageModel>/path}/picture/office.png"></Button>
+                  </HBox>
+                </f:content>
+                <f:layoutData>
+                  <layout:SplitterLayoutData size="auto" />
+                </f:layoutData>
+              </f:SimpleForm>
+              <layout:Splitter id="split2">
+                <layout:layoutData>
+                  <layout:SplitterLayoutData size="45%"/>
+                </layout:layoutData>
+                <layout:contentAreas>
+                  <TextArea id="id_other" valueState="Information" rows="9" cols="40" placeholder="Enter other activities here">
+                    <layoutData>
+                      <layout:SplitterLayoutData size="auto" />
+                    </layoutData>
+                  </TextArea>
+                  <HBox>
+                    <Image id="smiley" width="150px" class="large"/>
+                    <VBox>
+                    <Text id="scoreText" class="large"/>
+                    <Text id="scoreNumber" class="underlined underline-clip"/>
+                    </VBox>
+                  </HBox>
+                </layout:contentAreas>
+              </layout:Splitter>
+            </layout:contentAreas>
+          </layout:Splitter>
+          <!-- <HBox id="chart">
+            <Image id="pie" width="80%" src="{imageModel>/path}/picture/PieChart.png"/> -->
+            <chart:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showZoom="false" width="auto" visible="true">
+              <chart:ChartContainerContent>
+                <chart:content>
+                  <viz:Popover id="idPopover"></viz:Popover>
+                  <viz:VizFrame id="idPieChart" uiConfig="{applicationSet:'fiori'}" vizType='pie' autoAdjustHeight="true" width="auto" vizProperties="{
                     plotArea:{
                     dataLabel:{visible: true},
                     drawingEffect: 'glossy'
                       },
                     title : {text:'Analysis Chart'}
                     }">
-        <viz:dataset>
-            <viz.data:FlattenedDataset data="{oJModel>/values}">
-                <viz.data:dimensions>
-                    <viz.data:DimensionDefinition name="category" value="{oJModel>category}" />
-                </viz.data:dimensions>
-                <viz.data:measures>
-                    <viz.data:MeasureDefinition name="value" value="{oJModel>value}" />
-                </viz.data:measures>
-            </viz.data:FlattenedDataset>
-        </viz:dataset> 
-        <viz:feeds>
-            <viz.feeds:FeedItem uid="size" type="Measure" values="value"/>
-            <viz.feeds:FeedItem uid="color" type="Dimension" values="category"/>
-        </viz:feeds> 
-    </viz:VizFrame>
-     </chart:content> 
-     </chart:ChartContainerContent> 
-     </chart:ChartContainer>  
-     </HBox> 
-      <!-- <f:SimpleForm>
-      <f:content >
-          <TextArea xmlns="sap.m" rows="4" id="area1" class="sapUiMediumMarginTop" 
-          editable="false" growing="true" growingMaxLines="10" width="100%"/>
-     </f:content>
-     </f:SimpleForm> -->
-
- <Panel expandable="true" width="auto" class="sapUiResponsiveMargin">
- <headerToolbar>
- <OverflowToolbar style="Clear">
- <Title text="Have a Look on your Wellbeing Status" />
- </OverflowToolbar>
- </headerToolbar>
- <content>
-    <MessageStrip
-     id="area1"
-     text="Click on Daily/Weekly Report to know your result!"
-      showIcon="true"
-      showCloseButton="true"
-      class="sapUiMediumMarginBottom">
-      <layoutData>
-      <layout:SplitterLayoutData size="300px" />
-      </layoutData>
-      </MessageStrip>
-   </content>
-   </Panel>  
-   </content>
+                    <viz:dataset>
+                      <viz.data:FlattenedDataset data="{oJModel>/values}">
+                        <viz.data:dimensions>
+                          <viz.data:DimensionDefinition name="category" value="{oJModel>category}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                          <viz.data:MeasureDefinition name="value" value="{oJModel>value}" />
+                        </viz.data:measures>
+                      </viz.data:FlattenedDataset>
+                    </viz:dataset>
+                    <viz:feeds>
+                      <viz.feeds:FeedItem uid="size" type="Measure" values="value"/>
+                      <viz.feeds:FeedItem uid="color" type="Dimension" values="category"/>
+                    </viz:feeds>
+                  </viz:VizFrame>
+                </chart:content>
+              </chart:ChartContainerContent>
+              <chart:layoutData>
+                <layout:SplitterLayoutData size="38%" />
+              </chart:layoutData>
+            </chart:ChartContainer>
+            <!-- <layoutData>
+              <layout:SplitterLayoutData size="auto"/>
+            </layoutData>
+          </HBox> -->
+        </layout:contentAreas>
+      </layout:Splitter>
+      <Panel id="panel1" expandable="true" width="auto" class="sapUiResponsiveMargin">
+        <headerToolbar>
+          <OverflowToolbar style="Clear">
+            <Title text="Have a Look on your Wellbeing Status" />
+          </OverflowToolbar>
+        </headerToolbar>
+        <content>
+          <MessageStrip id="area1" text="Click on Daily/Weekly Report to know your result!" showIcon="true" class="sapUiMediumMarginBottom">
+            <layoutData>
+              <layout:SplitterLayoutData size="300px" />
+            </layoutData>
+          </MessageStrip>
+        </content>
+      </Panel>
+    </content>
     <footer>
-			<OverflowToolbar id="otbFooter">
+      <OverflowToolbar id="otbFooter">
         <ToolbarSpacer/>
         <Label text = "Make Yourself Happy" id="label5" class = "myfont"/>
         <!-- <Button xmlns="sap.m" id="btnInsta" type="Accept" press="pressInsta" icon="../zui_well_track/picture/instagram.png"> -->
-				<Button xmlns="sap.m" id="btnInsta" type="Accept" press="pressInsta" icon="{imageModel>/path}/picture/instagram.png"> 
-          <layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button>  
+        <Button xmlns="sap.m" id="btnInsta" type="Accept" press="pressInsta" icon="{imageModel>/path}/picture/instagram.png">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
 
-        <!-- <Button xmlns="sap.m"  id="btnGaana" type="Accept" press="pressGaana" icon="../zui_well_track/picture/gaana.png"> -->
-				<Button xmlns="sap.m"  id="btnGaana" type="Accept" press="pressGaana" icon="{imageModel>/path}/picture/gaana.png">
-        	<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button> 
+        <!-- <Button xmlns="sap.m" id="btnGaana" type="Accept" press="pressGaana" icon="../zui_well_track/picture/gaana.png"> -->
+        <Button xmlns="sap.m" id="btnGaana" type="Accept" press="pressGaana" icon="{imageModel>/path}/picture/gaana.png">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
 
-        <!-- <Button xmlns="sap.m"  id="btnYT" type="Accept"  press="pressYT" icon="../zui_well_track/picture/youtube.png"> -->
-        <Button xmlns="sap.m"  id="btnYT" type="Accept"  press="pressYT" icon="{imageModel>/path}/picture/youtube.png">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button> 
+        <!-- <Button xmlns="sap.m" id="btnYT" type="Accept" press="pressYT" icon="../zui_well_track/picture/youtube.png"> -->
+        <Button xmlns="sap.m" id="btnYT" type="Accept" press="pressYT" icon="{imageModel>/path}/picture/youtube.png">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
 
-        <!-- <Button xmlns="sap.m"  id="btnSwiggy" type="Accept" press="pressSwiggy" icon="../zui_well_track/picture/swiggy.png"> -->
-				<Button xmlns="sap.m"  id="btnSwiggy" type="Accept" press="pressSwiggy" icon="{imageModel>/path}/picture/swiggy.png">
-        <layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button> 
+        <!-- <Button xmlns="sap.m" id="btnSwiggy" type="Accept" press="pressSwiggy" icon="../zui_well_track/picture/swiggy.png"> -->
+        <Button xmlns="sap.m" id="btnSwiggy" type="Accept" press="pressSwiggy" icon="{imageModel>/path}/picture/swiggy.png">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
 
-        <!-- <Button xmlns="sap.m"  id="btnZom" type="Accept" press="pressZom" icon="../zui_well_track/picture/zomato.png"> -->
-				  <Button xmlns="sap.m"  id="btnZom" type="Accept" press="pressZom" icon="{imageModel>/path}/picture/zomato.png"> 
-          <layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button> 
+        <!-- <Button xmlns="sap.m" id="btnZom" type="Accept" press="pressZom" icon="../zui_well_track/picture/zomato.png"> -->
+        <Button xmlns="sap.m" id="btnZom" type="Accept" press="pressZom" icon="{imageModel>/path}/picture/zomato.png">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
 
-        <!-- <Button xmlns="sap.m"  id="btnFb" type="Accept" press="pressFb" icon="../zui_well_track/picture/facebook.png"> -->
-        <Button xmlns="sap.m"  id="btnFb" type="Accept" press="pressFb" icon="{imageModel>/path}/picture/facebook.png">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button>
+        <!-- <Button xmlns="sap.m" id="btnFb" type="Accept" press="pressFb" icon="../zui_well_track/picture/facebook.png"> -->
+        <Button xmlns="sap.m" id="btnFb" type="Accept" press="pressFb" icon="{imageModel>/path}/picture/facebook.png">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
 
-				<ToolbarSpacer/>
-				<Button xmlns="sap.m" press="onPress" text="Daily Report" id="btnSubmit" type="Accept" icon="sap-icon://accept">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button>
+        <ToolbarSpacer/>
+        <Button xmlns="sap.m" press="onPress" text="Daily Report" id="btnSubmit" type="Accept" icon="sap-icon://accept">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
         <Button xmlns="sap.m" press="onPressWeekly" text="Weekly Report" id="btnWeek" type="Accept" icon="sap-icon://accept">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button>
-				<Button xmlns="sap.m" press="onRest" text="Reset" id="btnReset" type="Reject" icon="sap-icon://reset">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-				</Button>
-			</OverflowToolbar>
-		</footer>
-    </Page>
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
+        <Button xmlns="sap.m" press="onPressReset" text="Reset" id="btnReset" type="Reject" icon="sap-icon://reset">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow"/>
+          </layoutData>
+        </Button>
+      </OverflowToolbar>
+    </footer>
+  </Page>
 </mvc:View>
